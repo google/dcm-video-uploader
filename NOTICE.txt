@@ -1,0 +1,4 @@
+VideoUploader makes use of the following third-party libraries:
+
+ - Retrying (https://pypi.python.org/pypi/retrying) under Apache 2.0 license
+   (http://www.apache.org/licenses/LICENSE-2.0)
