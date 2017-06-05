@@ -201,7 +201,7 @@ def main(argv):
   # Create and initialize VideoUploader
   uploader = video_uploader.VideoUploader(
       profile_id, advertiser_id, campaign_id, placement_id)
-  uploader.initialize(argv)
+  uploader.initialize(flags)
 
   new_ads = []
 
