@@ -1,2 +1,5 @@
 *.pyc
 dfareporting_utils.py
+client_secrets.json
+__pycache__
+
