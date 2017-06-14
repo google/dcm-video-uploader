@@ -181,6 +181,13 @@ def process_row(row, uploader, failure_writer):
 
   return created_ad_id
 
+
+def open_csv(filename, mode):
+  """Open a csv file in proper mode depending on Python verion"""
+  mode = mode + 'b' if sys.version_info[0] == 2 else mode
+  return open(filename, mode)
+
+
 def main(argv):
   """Main function
 
@@ -206,9 +213,9 @@ def main(argv):
   new_ads = []
 
   # Open and process CSV file with all videos to be uploaded
-  with open(creatives_list) as csvfile, open(
-      success_file, 'wb') as success_csv, open(
-      failure_file, 'wb') as failure_csv:
+  with open(creatives_list) as csvfile, \
+    open_csv(success_file, 'w') as success_csv, \
+    open_csv(failure_file, 'w') as failure_csv:
 
     # Create CSV readers and writers
     reader = csv.DictReader(csvfile)
@@ -220,7 +227,7 @@ def main(argv):
       # If ad could be created, add its ID to the list of created ads
       if new_ad_id:
         new_ads.append(new_ad_id)
-        
+
     # Activate all newly created ads
     logger.info("Activating ads...")
     uploader.activate_all_ads(new_ads, success_writer)
