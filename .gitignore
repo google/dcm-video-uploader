@@ -2,4 +2,6 @@
 dfareporting_utils.py
 client_secrets.json
 __pycache__
+.idea
+dcm-video-uploader.iml
 
