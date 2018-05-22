@@ -356,6 +356,12 @@ class VideoUploader(object):
         'impressionRatio': '1',
         'priority': 'AD_PRIORITY_01'
     }
+
+    # Ad definition
+    # Current implementation supports only Geo targeting.
+    # In order to add support for additional targetings, you should include
+    # the targeting in the Ad descriptor here. See https://developers.google.com/doubleclick-advertisers/v3.0/ads
+    # for details on how to specify other targeting criteria.
     ad = {
         'active': 'false',
         'campaignId': self._campaign_id,
