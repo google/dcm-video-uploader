@@ -19,12 +19,9 @@ In order to install dependencies for the script, run
 $ pip install -r requirements.txt
 ```
 
-## Execution
+## Running the script
 
-For a full description on how to execute the script, run
-```
-python upload_videos.py --help
-```
+### Before first run
 The script makes use of OAuth 2.0 credentials to access DCM APIs. You
 would need to place your credentials on a 'client_secrets.json' file in the
 execution directory. You can follow the instructions available at
@@ -32,7 +29,33 @@ https://developers.google.com/doubleclick-advertisers/getting_started. In
 order to perform the OAuth authentication from the command-line, you may need
 to execute the script with the option `--noauth_local_webserver`
 
-## Main files
+### Execution
+In order to run the script, use the following command:
+```
+$ python upload_videos.py [arguments]
+```
+You must provide, at least, the following arguments:
+* `profile_id`: The ID of the DCM use profile to use. You will need a profile with
+write access to the advertiser and campaign where you want to add the videos.
+* `advertiser_id`: The ID of the advertiser to use. This is where all new video
+creatives will be added.
+* `campaign_id`: The ID of the campaign where the dynamic creative structure will be added
+* `placement_id`: The ID of the DCM placement inside which ads will be created
+* `creatives_list`: CSV file with one row per creative. The following columns are
+expected in the file: *Filename*, *File URL*, *Creative name*, *ZIP*, *Landing URL*. *Filename*
+column may be empty as long as *File URL* has a value. The rest of the columns are all required
+* `success_file`: Output CSV with ads created. The script will write here the list of all
+the ads that were successfully created
+* `failure_file`: Output CSV with ads that could not be created. If for any reason any of the
+ads could not be created, you will find the reason in this file
+
+
+For a full description on how to execute the script, run
+```
+$ python upload_videos.py --help
+```
+
+## Files overview
 
 A description of the main files part of the script follows
 
